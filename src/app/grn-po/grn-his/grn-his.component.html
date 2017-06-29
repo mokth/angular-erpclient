@@ -1,0 +1,13 @@
+ <dx-data-grid
+    id="gridContainer"
+    [dataSource]="polist"
+    [sorting]="{mode: 'single'}"
+    [columns]="['date', 'iCode', 'doNo', 'qty']"
+    [paging]="{ pageSize: 8 }"
+    >
+</dx-data-grid>
+<div class="col-xs-12">
+    <button type="button" 
+       (click)="onCancel()"
+       class="btn btn-large btn-block btn-primary">BACK</button> 
+</div>

@@ -10,7 +10,7 @@
       "assets": [
         "assets",
         "favicon.ico"
-      ],
+      ],      
       "index": "index.html",
       "main": "main.ts",
       "polyfills": "polyfills.ts",
@@ -19,9 +19,15 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+         "../node_modules/devextreme/dist/css/dx.common.css", 
+        "../node_modules/devextreme/dist/css/dx.light.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/devextreme/dist/js/dx.all.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

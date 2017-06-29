@@ -1,0 +1,14 @@
+ <h4>PR NO:{{prno}}</h4>
+ <dx-data-grid
+    id="gridContainer"
+    [dataSource]="pritems"
+    [sorting]="{mode: 'single'}"
+    [columns]="columns"
+    [paging]="{ pageSize: 8 }"
+    >
+</dx-data-grid>
+<div class="col-xs-12">
+    <button type="button" 
+       (click)="onCancel()"
+       class="btn btn-large btn-block btn-primary">BACK</button> 
+</div>

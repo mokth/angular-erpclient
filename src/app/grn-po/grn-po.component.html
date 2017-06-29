@@ -1,0 +1,94 @@
+<form class="form-horizontal">
+
+  <div class="form-group">
+      <label class="control-label col-xs-3" for="pono">PO NO</label>
+      <div class="col-xs-9">
+          <select [(ngModel)]="grnpo" class="form-control" id="pono" name="pono" (ngModelChange)="updateObjValue2($event)" >
+              <option *ngFor="let item of  polist;let i = index"
+              [ngValue]="item">{{item.poNo}}</option>
+          </select>
+      </div>
+  </div>
+
+  <div class="form-group" *ngIf="isGRN_Null()">
+    <label class="control-label col-xs-3" for="podate">PO DATE</label>
+    <div class="col-xs-9">
+       <input type="text" class="form-control" id="podate" value="{{grnpo.poDt}}">
+    </div>
+  </div>
+  <div class="form-group" *ngIf="isGRN_Null()">
+    <label class="control-label col-xs-3" for="podate">VENDOR</label>
+    <div class="col-xs-9">
+       <input type="text" class="form-control" id="podate" value="{{grnpo.vendName}}">
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="isGRN_Null()">
+      <label class="control-label col-xs-3" for="icode">ITEM CODE</label>
+      <div class="col-xs-9">
+          <select [(ngModel)]="grnpoitem" class="form-control" id="icode" name="icode" 
+              (ngModelChange)="updateObjValue3($event)" >
+              <option *ngFor="let itm of  poitem;let i = index"
+              [ngValue]="itm">{{itm.iCode}}</option>
+          </select>
+      </div>
+  </div>
+  <div class="form-group" *ngIf="isGRNItem_Null()">
+    <label class="control-label col-xs-3" for="idesc">DESC</label>
+    <div class="col-xs-9">
+       <input type="text" class="form-control" id="idesc" value="{{grnpoitem.iDes}}">
+    </div>
+  </div>
+  <div class="form-group" *ngIf="isGRNItem_Null()">
+    <label class="control-label col-xs-3" for="poqty">PO QTY</label>
+    <div class="col-xs-6">
+       <input type="text" class="form-control" id="poqty" value="{{grnpoitem.poQty}}">       
+    </div>
+    <div class="col-xs-3">
+        <input type="text" class="form-control" id="stduom" value="{{grnpoitem.stdUOM}}">
+    </div>
+  </div>
+  <div class="form-group" *ngIf="isGRNItem_Null()">
+    <label class="control-label col-xs-3" for="recqty">RECEIVED</label>
+    <div class="col-xs-6">
+       <input type="text" class="form-control" id="recqty" value="{{grnpoitem.recvQty}}">
+    </div>
+     <div class="col-xs-3">
+        <input type="text" class="form-control" id="stduom" value="{{grnpoitem.stdUOM}}">
+    </div>
+  </div>
+  <div class="form-group" *ngIf="isGRNItem_Null()">
+    <label class="control-label col-xs-3" for="Tolerance">TOLERENCE</label>
+    <div class="col-xs-6">
+       <input type="text" class="form-control" id="Tolerance" value="{{grnpoitem.tolerance}}">
+    </div>
+     <div class="col-xs-3">
+        <input type="text" class="form-control" id="stduom" value="{{grnpoitem.stdUOM}}">
+    </div>
+  </div>
+  <div class="form-group" *ngIf="isGRNItem_Null()">
+    <label class="control-label col-xs-3" for="balqty">BALANCE</label>
+    <div class="col-xs-6">
+       <input type="text" class="form-control" id="balqty" value="{{grnpoitem.balanceQty}}">
+    </div>
+     <div class="col-xs-3">
+        <input type="text" class="form-control" id="stduom" value="{{grnpoitem.stdUOM}}">
+    </div>
+  </div>
+  <div>
+    <div class="row">
+        <div class="col-xs-6">
+            <button type="button" 
+                class="btn btn-large btn-block btn-primary" 
+                (click)="onGrnHisClick()">GRN HISTORY</button>
+        </div>
+        
+        <div class="col-xs-6">
+            <button type="button" 
+            (click)="onCancel()"
+            class="btn btn-large btn-block btn-primary">BACK</button> 
+        </div>
+    </div>  
+  </div>
+ 
+

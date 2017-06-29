@@ -1,0 +1,75 @@
+<form class="form-horizontal" [formGroup]="rform"  (ngSubmit)="onSubmit(rform)" >
+    <div class="form-group">
+        <label class="control-label col-xs-4" for="date">DATE</label>
+         <div class="col-xs-8">
+            <input type="date" class="form-control" id="date" name="date" formControlName="date" >
+            <!--<span class="help-inline" 
+                  *ngIf="!rform.get('date').valid &&  rform.get('date').touched">>Date is required</span>-->
+         </div>
+     </div>
+     <div class="form-group">
+        <label class="control-label col-xs-4" for="workorder">WORK ORDER</label>
+         <div class="col-xs-8">
+            <select formControlName="workorder" class="form-control" id="workorder" name="workorder" >
+              <option *ngFor="let item of sheCodelist;let i = index"
+              [ngValue]="item">{{item}}</option>
+          </select>
+         </div>
+     </div>
+     <div class="form-group">
+        <label class="control-label col-xs-4" for="product">PRODUCT</label>
+         <div class="col-xs-8">
+            <input type="text" class="form-control" id="product" name="product" formControlName="product" >
+            <!--<span class="help-inline" 
+                  *ngIf="!rform.get('date').valid &&  rform.get('date').touched">>Date is required</span>-->
+         </div>
+     </div>
+     <div class="form-group">
+        <label class="control-label col-xs-4" for="workcenter">WORK CENTER</label>
+         <div class="col-xs-8">
+            <select id="workcenter" name="workcenter" formControlName="workcenter" class="form-control" >
+              <option *ngFor="let wc of workcenterlist;let i = index"
+              [ngValue]="wc">{{wc}}</option>
+            </select>
+         </div>
+     </div>
+      <div class="form-group">
+        <label class="control-label col-xs-4" for="process">PROCESS</label>
+         <div class="col-xs-8">
+            <select id="process" name="process" formControlName="process" class="form-control" >
+              <option *ngFor="let prc of processlist;let i = index"
+              [ngValue]="prc">{{prc}}</option>
+            </select>
+         </div>         
+     </div>
+     <div class="form-group">
+        <label class="control-label col-xs-4" for="machine">MACHINE</label>
+         <div class="col-xs-8">
+            <input type="text" class="form-control" id="machine" name="machine" formControlName="machine" >
+            <!--<span class="help-inline" 
+                  *ngIf="!rform.get('date').valid &&  rform.get('date').touched">>Date is required</span>-->
+         </div>
+     </div>    
+     <div class="form-group">
+        <label class="control-label col-xs-4" for="output">DAILY OUTPUT</label>
+         <div class="col-xs-8">
+            <input type="number" class="form-control" id="output" name="output" formControlName="output" >
+            
+         </div>
+     </div>    
+     
+     <div class="form-group">
+         <div class="col-xs-6">
+               <button type="submit" 
+                   [disabled]="!rform.valid"
+                   class="btn btn-large btn-block btn-primary">SUBMIT</button>
+            </div>
+            <div class="col-xs-6">
+               <button type="button" 
+                   (click)="onCancel()"
+                   class="btn btn-large btn-block btn-primary">CANCEL</button>
+            </div>
+             <span class="help-block">{{message}}</span>
+      
+    </div>
+</form>

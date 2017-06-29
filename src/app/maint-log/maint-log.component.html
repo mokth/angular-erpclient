@@ -1,0 +1,43 @@
+<form class="form" [formGroup]="rform" (ngSubmit)="onSubmit(rform)">
+    <div class="form-group">
+        <label class="control-label" for="date">REPORT ON</label>
+        <input type="date" class="form-control" id="date" name="date" formControlName="date" >
+         <span class="help-inline" 
+               *ngIf="!rform.get('date').valid &&  rform.get('date').touched">>Date is required</span>
+     </div>
+     <div class="form-group">
+        <label class="control-label" for="machine">MACHINE</label>
+        <input type="tex" class="form-control" id="machine" name="machine" formControlName="machine">
+        <span class="help-inline" 
+               *ngIf="!rform.get('machine').valid &&  rform.get('machine').touched">Mmachine is required</span>
+     </div>
+     <div class="form-group">
+        <label class="control-label" for="desc">DESCRIPTION</label>
+        <textarea name="desc" cols="40" rows="5" class="form-control" name="desc" id="desc" formControlName="desc"></textarea>
+        <span class="help-inline" 
+               *ngIf="!rform.get('desc').valid &&  rform.get('desc').touched">Description is required</span>
+     </div>
+     <div class="form-group">
+        <input type="file"  class="form-control" 
+                (change)="fileChange($event)" 
+                name="pic" 
+                formControlName="pic" placeholder="Upload file" accept=".jpg,.jpeg,.png">
+        <div class="row">
+            <div class="col-xs-6">
+               <button type="submit" 
+                  [disabled]="!rform.valid"
+                   class="btn btn-large btn-block btn-primary">SUBMIT</button>
+            </div>
+            <div class="col-xs-6">
+               <button type="button" 
+                   (click)="onCancel()"
+                   class="btn btn-large btn-block btn-primary">CANCEL</button>
+            </div>
+        </div>
+        <span class="help-block" 
+               *ngIf="!isPicFileReady()">Picture file is not ready yet.</span>
+        <span class="help-block">{{message}}</span>
+        
+    </div>
+</form>
+

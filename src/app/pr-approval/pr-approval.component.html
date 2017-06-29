@@ -1,0 +1,30 @@
+ <dx-data-grid
+    id="gridContainer"
+    (onCellClick)='oncellClick($event)' 
+    [dataSource]="prlist"
+    [sorting]="{mode: 'single'}"
+    [columns]="columns"
+    [paging]="{ pageSize: 8 }"
+    >
+</dx-data-grid>
+<div class="col-xs-12">
+    <button type="button" 
+       (click)="onCancel()"
+       class="btn btn-large btn-block btn-primary">BACK</button> 
+</div>
+
+ <!--<dx-data-grid [dataSource]="projects"
+                  [allowColumnResizing]="true"
+                  [hoverStateEnabled]="false"
+                  [allowColumnReordering]="true"
+                [searchPanel]="{visible: true}"
+                  [paging]="{pageSize: 5}"
+                 [pager]="{showInfo:true,showNavigationButtons:true,showPageSizeSelector:true}"
+                  [rowAlternationEnabled]="true"
+                  [selection]="{mode: 'none'}"
+                  [editing]="{mode: 'form',allowUpdating: true,allowDeleting: true,allowAdding: true, texts:{addRow: 'Add a project'}}"
+                  [export]="{enabled: true,fileName:'Projects',allowExportSelectedData: true}"
+                  [groupPanel]="{visible: true}"
+                  [filterRow]="{visible: true,applyFilter: 'auto'}"
+                  [selection]="{mode: 'single'}">
+    </dx-data-grid>-->
