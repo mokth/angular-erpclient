@@ -20,9 +20,10 @@ export class PrApprovalComponent implements OnInit,CanComponentDeactivate {
   rform:FormGroup;  
   isNeedAppr:boolean;
   changesSaved = false;
+  message:string;
   // [columns]="['date', 'prno', 'vendname']"
   columns = [
-       { dataField: 'tick', dataType: 'boolean', caption: ' ',width:25 },
+       { dataField: 'tick', dataType: 'boolean', caption: ' ',width:35 },
         { dataField: 'date', caption: 'DATE',width:90 },
         { dataField: 'prno', caption:'PR NO',width:90 },
         { dataField: 'vendname',caption:'SUPPLIER'}        
@@ -110,13 +111,20 @@ export class PrApprovalComponent implements OnInit,CanComponentDeactivate {
                 (resp) =>{
                   try{
                       let strs= resp.json();
+                      if (strs.status=="OK"){
+                        this.prlist = this.prlist.filter(x=>x.tick!=true);
+                        this.dataGrid.instance.refresh();
+                        this.message = "PR(s) Approved.";
+                      } else this.message = strs.status;
                       console.log(strs);
                   }catch(e){
+                    this.message ="error found..." 
                     error => console.log(e);                   
                   }
                   
                 },
                 (error) =>{
+                   this.message ="error found..." 
                   console.log(error)                
                 }
          )    
