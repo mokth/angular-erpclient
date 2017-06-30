@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 
 import { AuthserviceService } from './authservice.service';
-
+import { config } from './config';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +10,7 @@ import { AuthserviceService } from './authservice.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  title:string ;
   constructor(private auth:AuthserviceService,private router: Router){
     if (auth.isAuthenticated()){
         router.navigate(['/main']);
@@ -18,9 +19,13 @@ export class AppComponent implements OnInit {
   isLogon:boolean;
 
   ngOnInit() {
+    this.title ="ERP MOBILE";
     this.isLogon = this.auth.isAuthenticated();
     this.auth.authChanged.subscribe(
       (x)=>{this.isLogon=x; }
+      ) ;
+    this.auth.titleChanged.subscribe(
+      (t)=>{this.title=t; }
       ) ;
   }
 }

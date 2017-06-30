@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import {Location} from '@angular/common';
 
 import { PRItem } from "app/pr-approval/pritem";
+import { AuthserviceService } from "app/authservice.service";
 
 
 @Component({
@@ -21,13 +22,15 @@ export class PrItemComponent implements OnInit {
         { dataField: 'unitprice',caption:'PRICE',width:60 },
         { dataField: 'amount',caption:'AMT',width:80}        
     ];
-  constructor(private http:Http,
+  constructor(private auth:AuthserviceService,
+              private http:Http,
               private route:Router,
               private _location: Location,
               private activeroute: ActivatedRoute,
               @Inject('API_URL') private apiUrl:string) { }
 
    ngOnInit() {
+     this.auth.titleChanged.next('PR ITEMS');   
       this.activeroute.params.subscribe(params => {
        this.prno = params['id'];       
        this.getPRItems();   

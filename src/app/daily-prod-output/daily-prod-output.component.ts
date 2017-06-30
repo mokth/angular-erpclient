@@ -7,6 +7,7 @@ import { DailyProdInput } from "app/daily-prod-output/DailyProdInput";
 import { DateValidators } from "app/shared/DateValidator";
 import { CanComponentDeactivate } from "app/canDeactivateGuard";
 import { Observable } from "rxjs/Observable";
+import { AuthserviceService } from "app/authservice.service";
 
 
 @Component({
@@ -24,11 +25,13 @@ export class DailyProdOutputComponent implements OnInit,CanComponentDeactivate {
   workcenterlist:string[]=[];
   processlist:string[]=[];
   
-  constructor(private http:Http,
+  constructor(private auth:AuthserviceService,
+              private http:Http,
               private router: Router,
               @Inject('API_URL') private apiUrl:string) { }
 
   ngOnInit() {
+     this.auth.titleChanged.next('DAILY OUTPUT');
      this.rform = new FormGroup({
         date: new FormControl(null,[Validators.required,DateValidators.isValidDate]),
         workorder: new FormControl(null, Validators.required),

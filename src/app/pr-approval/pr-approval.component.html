@@ -7,11 +7,34 @@
     [paging]="{ pageSize: 8 }"
     >
 </dx-data-grid>
-<div class="col-xs-12">
-    <button type="button" 
-       (click)="onCancel()"
-       class="btn btn-large btn-block btn-primary">BACK</button> 
-</div>
+
+<form class="form" [formGroup]="rform">
+    <div class="form-group">
+        <label class="control-label col-xs-4" for="pass">PASSWORD</label>
+        <div class="col-xs-8">
+            <input type="password" class="form-control" id="pass" name="pass" formControlName="pass" >
+            <span class="help-inline" 
+                *ngIf="!rform.get('pass').valid &&  rform.get('pass').touched"><small>Password is required.</small></span>
+        </div>
+     </div>
+     <br>
+     <br>     
+  <div class="form-group" >
+        <div class="col-xs-6">
+            <button type="button" 
+            [disabled]="!rform.valid || !isPRSelected()"
+            (click)="onApprove()"
+            class="btn btn-large btn-block btn-primary">APPROVE</button> 
+        </div>
+        <div class="col-xs-6">
+        <button type="button" 
+        (click)="onCancel()"
+        class="btn btn-large btn-block btn-primary">BACK</button> 
+        </div>
+   </div>
+</form>
+
+
 
  <!--<dx-data-grid [dataSource]="projects"
                   [allowColumnResizing]="true"

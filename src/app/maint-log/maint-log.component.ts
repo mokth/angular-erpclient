@@ -5,6 +5,7 @@ import { RequestOptions, Headers, Http } from "@angular/http";
 import { FormGroup, Validators, FormControl } from "@angular/forms";
 
 import { CanComponentDeactivate } from "app/canDeactivateGuard";
+import { AuthserviceService } from "app/authservice.service";
 
 
 @Component({
@@ -20,11 +21,13 @@ export class MaintLogComponent implements OnInit,CanComponentDeactivate {
   changesSaved = false;
   message:string="";
 
-  constructor(private http:Http, 
+  constructor(private auth:AuthserviceService,
+              private http:Http, 
               private router: Router,
               @Inject('API_URL') private apiUrl:string) { }
  
   ngOnInit() {
+    this.auth.titleChanged.next('MAINTENANCE');   
     this.rform = new FormGroup({
        date: new FormControl(null, Validators.required),
        machine: new FormControl(null, Validators.required),

@@ -3,6 +3,7 @@ import { Http, Headers, RequestOptions, RequestMethod } from "@angular/http";
 import { Router } from "@angular/router";
 import DataSource from 'devextreme/data/data_source'
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { AuthserviceService } from "app/authservice.service";
 
 @Component({
   selector: 'app-item-code',
@@ -14,11 +15,13 @@ export class ItemCodeComponent implements OnInit {
   dataSource:any;
   imagepath:string;
   itemcode:string;
-  constructor(private http:Http,
+  constructor(private auth:AuthserviceService,
+              private http:Http,
               private route:Router,
               @Inject('API_URL') private apiUrl:string) { }
 
   ngOnInit() {
+    this.auth.titleChanged.next('MASTER ITEM');
     this.rform = new FormGroup({
        itemcode: new FormControl(null, Validators.required),
        itemdesc: new FormControl(null, Validators.required),

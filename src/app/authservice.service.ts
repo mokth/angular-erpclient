@@ -8,6 +8,7 @@ import { AuthHttp, JwtHelper } from 'angular2-jwt';
 export class AuthserviceService {
   authChanged = new Subject<boolean>();
   authMsgChanged = new Subject<string>();
+  titleChanged = new Subject<string>();
   isvalidUser:boolean=false;
   jwtHelper: JwtHelper = new JwtHelper();
   userId:string;

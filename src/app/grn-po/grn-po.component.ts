@@ -5,6 +5,7 @@ import { GRNPoItem } from "app/grn-po/grnpoitem";
 import { GRNHelper } from "app/grn-po/grn-helper";
 import { Router } from "@angular/router";
 import DataSource from 'devextreme/data/data_source'
+import { AuthserviceService } from "app/authservice.service";
 
 
 @Component({
@@ -21,15 +22,14 @@ export class GrnPoComponent implements OnInit {
   poitem:GRNPoItem[]=[];
   dataSource:any;
 
-  constructor(private http:Http,
+  constructor(private auth:AuthserviceService,
+              private http:Http,
               private grnhelp:GRNHelper,
               private route:Router,
               @Inject('API_URL') private apiUrl:string) { }
   
   ngOnInit() {
-    // this.dataSource = new dataSource(
-    //   "http://www.wincom3cloud.com/webapi/api/inventory/item");
-   
+    this.auth.titleChanged.next('GOOD RECEIPT');   
     this.getGRNPo();
   }
   

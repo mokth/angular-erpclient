@@ -2,6 +2,7 @@ import { Component, OnInit, Inject, Input } from '@angular/core';
 import { Http, RequestOptions, RequestMethod,Headers } from "@angular/http";
 import { GRNHis } from "app/grn-po/grnhis";
 import { GRNHelper } from 'app/grn-po/grn-helper';
+import { AuthserviceService } from "app/authservice.service";
 
 @Component({
   selector: 'app-grn-po-item',
@@ -14,11 +15,13 @@ export class GrnPoItemComponent implements OnInit {
 
  hislist:GRNHis[]=[];
 
- constructor(private http:Http,
+ constructor(private auth:AuthserviceService,
+             private http:Http,
              private grnhelp:GRNHelper,
              @Inject('API_URL') private apiUrl:string) { }
   
   ngOnInit() {
+     this.auth.titleChanged.next('GOOD RECEIPT HISTORY');   
     this.getGRNHis();
     this.grnhelp.poChanged.subscribe(
       (x)=>{

@@ -13,6 +13,7 @@ export class MainMenuComponent implements OnInit {
   constructor(private auth:AuthserviceService,private router: Router) { }
 
   ngOnInit() {
+     this.auth.titleChanged.next('ERP MOBILE');   
   }
  
  OnLogout(){
