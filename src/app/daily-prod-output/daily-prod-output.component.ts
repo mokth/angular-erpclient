@@ -44,18 +44,29 @@ export class DailyProdOutputComponent implements OnInit,CanComponentDeactivate {
      this.getDailyProdList();
      this. onChanges();
   }
-
-  onChanges(): void {
-    this.rform.get('workorder').valueChanges.subscribe(val => {
+  
+  onWorkOrderChanged(e){
       let found= this.worklist.find(
-                  (x)=>{ return x.scheCode ==val; }
+                  (x)=>{ return x.scheCode ==e.value; }
                 );
       if (found==null) return;
       this.rform.get('product').setValue(found.prodCode);
       this.workcenterlist = this.worklist.filter(
-              (elt) =>{ return elt.scheCode==val ;}
-          ).map((x)=>{return x.wcCode }).sort();       
-    });
+              (elt) =>{ return elt.scheCode==e.value ;}
+          ).map((x)=>{return x.wcCode }).sort();    
+    }
+  
+  onChanges(): void {
+    // this.rform.get('workorder').valueChanges.subscribe(val => {
+    //   let found= this.worklist.find(
+    //               (x)=>{ return x.scheCode ==val; }
+    //             );
+    //   if (found==null) return;
+    //   this.rform.get('product').setValue(found.prodCode);
+    //   this.workcenterlist = this.worklist.filter(
+    //           (elt) =>{ return elt.scheCode==val ;}
+    //       ).map((x)=>{return x.wcCode }).sort();       
+    // });
 
     this.rform.get('workcenter').valueChanges.subscribe(val => {      
       let workno = this.rform.get('workorder').value;

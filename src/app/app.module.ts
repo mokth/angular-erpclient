@@ -3,9 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
-import { DxButtonModule } from 'devextreme-angular';
-import { DxDataGridModule } from 'devextreme-angular';
-import { DxLookupModule } from 'devextreme-angular';
+import { DxDataGridModule,DxLookupModule } from 'devextreme-angular';
+
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -60,7 +59,6 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpModule,
     SharedModule,
-    DxButtonModule,
     DxDataGridModule,
     DxLookupModule,
     RouterModule.forRoot(appRoutes)

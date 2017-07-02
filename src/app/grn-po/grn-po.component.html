@@ -3,10 +3,17 @@
   <div class="form-group">
       <label class="control-label col-xs-3" for="pono">PO NO</label>
       <div class="col-xs-9">
-          <select [(ngModel)]="grnpo" class="form-control" id="pono" name="pono" (ngModelChange)="updateObjValue2($event)" >
+          <!--<select [(ngModel)]="grnpo" class="form-control" id="pono" name="pono" (ngModelChange)="updateObjValue2($event)" >
               <option *ngFor="let item of  polist;let i = index"
               [ngValue]="item">{{item.poNo}}</option>
-          </select>
+          </select>-->
+           <dx-lookup
+                [dataSource]="polist"
+                 displayExpr="poNo"
+                 placeholder="Select PO"
+                [showPopupTitle]="false"
+                 (onValueChanged)="onValueChanged($event)" >
+            </dx-lookup>
       </div>
   </div>
 

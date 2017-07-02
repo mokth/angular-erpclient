@@ -87,6 +87,13 @@ export class GrnPoComponent implements OnInit {
       this.grnhelp.poChanged.next({'pono':this.grnpo.poNo,'porel':this.grnpo.poRelNo});
     }
 
+    onValueChanged(e){
+      this.grnpo= e.value;
+      this.getGRNPoItems(this.grnpo.poNo,this.grnpo.poRelNo);
+      this.grnhelp.poChanged.next({'pono':this.grnpo.poNo,'porel':this.grnpo.poRelNo});
+    
+    }
+
     updateObjValue3(item) {
      // console.log(item);
       this.grnpoitem= item;    

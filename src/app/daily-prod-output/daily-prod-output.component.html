@@ -10,10 +10,17 @@
      <div class="form-group">
         <label class="control-label col-xs-4" for="workorder">WORK ORDER</label>
          <div class="col-xs-8">
-            <select formControlName="workorder" class="form-control" id="workorder" name="workorder" >
+            <!--<select formControlName="workorder" class="form-control" id="workorder" name="workorder" >
               <option *ngFor="let item of sheCodelist;let i = index"
               [ngValue]="item">{{item}}</option>
-          </select>
+          </select>-->
+           <dx-lookup
+                [dataSource]="sheCodelist"
+                 placeholder="Select Item Code"
+                [showPopupTitle]="false"
+                (onValueChanged)="onWorkOrderChanged($event)"
+                >
+            </dx-lookup>
          </div>
      </div>
      <div class="form-group">
