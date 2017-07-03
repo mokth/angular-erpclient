@@ -1,11 +1,9 @@
-import { FileDropDirective } from 'ng2-file-upload';
 import { Component, OnInit, Inject, Input } from '@angular/core';
 import { Http,Headers } from "@angular/http";
 import { Router, ActivatedRoute } from "@angular/router";
 import {Location} from '@angular/common';
 
 import DataSource from 'devextreme/data/data_source'
-
 import { GRNHis } from "app/grn-po/grnhis";
 
 @Component({

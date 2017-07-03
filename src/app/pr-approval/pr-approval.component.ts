@@ -1,13 +1,13 @@
 import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { Http,Headers } from "@angular/http";
 import { Router } from "@angular/router";
-import { DxDataGridComponent } from "devextreme-angular";
+import { DxDataGridComponent } from "devextreme-angular/ui/data-grid";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { Observable } from "rxjs/Observable";
 
 import { AuthserviceService } from "app/authservice.service";
 import { PRAppr } from "app/pr-approval/prappr";
 import { CanComponentDeactivate } from "app/canDeactivateGuard";
-import { Observable } from "rxjs/Observable";
 
 @Component({
   selector: 'app-pr-approval',

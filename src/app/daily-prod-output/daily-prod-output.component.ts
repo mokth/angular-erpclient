@@ -2,11 +2,12 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Http, RequestOptions, Headers, RequestMethod } from "@angular/http";
 import { Router } from "@angular/router";
 import { FormGroup, Validators, FormControl } from "@angular/forms";
+import { Observable } from "rxjs/Observable";
+
 import { DailyProdInfo } from "app/daily-prod-output/DailyProdInfo";
 import { DailyProdInput } from "app/daily-prod-output/DailyProdInput";
 import { DateValidators } from "app/shared/DateValidator";
 import { CanComponentDeactivate } from "app/canDeactivateGuard";
-import { Observable } from "rxjs/Observable";
 import { AuthserviceService } from "app/authservice.service";
 
 
@@ -54,6 +55,14 @@ export class DailyProdOutputComponent implements OnInit,CanComponentDeactivate {
       this.workcenterlist = this.worklist.filter(
               (elt) =>{ return elt.scheCode==e.value ;}
           ).map((x)=>{return x.wcCode }).sort();    
+      
+       this.workcenterlist = this.workcenterlist.filter(
+              (elt, i, a) => i === a.findIndex( elt2 => elt === elt2 )
+          );
+
+        this.rform.get('workcenter').setValue('');  
+        this.rform.get('process').setValue('');
+        this.rform.get('machine').setValue('');
     }
   
   onChanges(): void {

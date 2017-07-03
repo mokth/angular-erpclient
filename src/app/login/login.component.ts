@@ -1,10 +1,9 @@
-import { config } from './../config';
-
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms/src/forms";
 import { Router } from "@angular/router";
 
 import { AuthserviceService } from "app/authservice.service";
+import { config } from './../config';
 
 
 @Component({

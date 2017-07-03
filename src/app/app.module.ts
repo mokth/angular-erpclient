@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
-import { DxDataGridModule,DxLookupModule } from 'devextreme-angular';
+import { DxDataGridModule } from 'devextreme-angular/ui/data-grid';
+import { DxLookupModule } from 'devextreme-angular/ui/lookup';
 
 
 import { AppComponent } from './app.component';
