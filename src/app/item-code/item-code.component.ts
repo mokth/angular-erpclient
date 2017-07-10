@@ -16,6 +16,13 @@ export class ItemCodeComponent implements OnInit {
   dataSource:any;
   imagepath:string;
   itemcode:string;
+  columns = [
+        { dataField: 'icode',  caption: 'ITEM',allowEditing: false },      
+        { dataField: 'itype', caption:'TYPE',allowEditing: false},
+        { dataField: 'iclass',caption:'CLASS',allowEditing: false},  
+        { dataField: 'stduom',caption:'UOM'}   
+    ];
+
   constructor(private auth:AuthserviceService,
               private http:Http,
               private route:Router,
@@ -67,5 +74,9 @@ export class ItemCodeComponent implements OnInit {
 
     onCancel(){
       this.route.navigate(["/main"]);
+    }
+
+    onRowUpdated(e){
+      console.log(e.key);
     }
 }

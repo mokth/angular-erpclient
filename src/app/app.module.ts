@@ -17,7 +17,7 @@ import { GrnPoComponent } from './grn-po/grn-po.component';
 import { config } from './config';
 import { GrnPoItemComponent } from './grn-po/grn-po-item/grn-po-item.component';
 import { GRNHelper } from 'app/grn-po/grn-helper';
-import { SharedModule } from "app/shared/share-module";
+
 import { MaintLogComponent } from './maint-log/maint-log.component';
 import { CanDeactivateGuard } from "app/canDeactivateGuard";
 import { DailyProdOutputComponent } from './daily-prod-output/daily-prod-output.component';
@@ -59,7 +59,6 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    SharedModule,
     DxDataGridModule,
     DxLookupModule,
     RouterModule.forRoot(appRoutes)

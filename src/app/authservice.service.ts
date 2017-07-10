@@ -17,14 +17,14 @@ export class AuthserviceService {
  
 
   logIn(name: string, password: string) {
-      let body = JSON.stringify({	"name":name,	"password":password});
+      let body = JSON.stringify({	"name":name,"password":password,"fullname":''});
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');      
       let options = new RequestOptions();
       options.headers = headers;
       options.method=RequestMethod.Post;
       console.log('posting login');
-      this.http.post(this.apiUrl+'api/auth/jwt',
+      this.http.post(this.apiUrl+'api/auth/jwt1',
                     body,{ headers: headers })
         .subscribe(
         (resp)=>{
